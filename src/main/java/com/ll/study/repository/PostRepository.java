@@ -10,10 +10,9 @@ import java.util.Optional;
 @Repository
 public class PostRepository {
     List<PostEntity> postList = new ArrayList<>();
-    private Long nextId = 1L;
+
     public PostEntity save(PostEntity postEntity) {
         postList.add(postEntity);
-        postEntity.setId(nextId++);
 
         return postEntity;
     }
@@ -34,4 +33,5 @@ public class PostRepository {
     public void deleteById(Long id) {
         postList.removeIf(post -> post.getId().equals(id));
     }
+
 }

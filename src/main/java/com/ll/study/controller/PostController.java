@@ -3,44 +3,47 @@ package com.ll.study.controller;
 import com.ll.study.controller.dto.PostRequest;
 import com.ll.study.controller.dto.PostResponse;
 import com.ll.study.service.PostService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/posts")
+@RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
 
-    @Autowired
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
 
-    @PostMapping("/api/posts")
+    @PostMapping()
     public PostResponse createPost(@RequestBody PostRequest request) {
         PostResponse response = postService.save(request);
 
         return response;
     }
-    @GetMapping("/api/posts")
+    @GetMapping()
     public List<PostResponse> findAllPosts() {
         return postService.findAll();
     }
 
-    @GetMapping("/api/posts/{id}")
+    @GetMapping("/{id}")
     public PostResponse findPostById(@PathVariable Long id) {
-        PostResponse response = postService.findById(id);
+        PostResponse response = null;
+        try{
+            response = postService.findById(id);
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
         return response;
     }
 
-    @PutMapping("/api/posts/{id}")
+    @PutMapping("/{id}")
     public PostResponse updatePost(@PathVariable Long id, @RequestBody PostRequest request) {
         PostResponse response = postService.update(id, request);
         return response;
     }
 
-    @DeleteMapping("/api/posts/{id}")
+    @DeleteMapping("/{id}")
     public PostResponse deletePost(@PathVariable Long id) {
         PostResponse response = postService.delete(id);
         return response;

@@ -23,10 +23,7 @@ public class PostService {
         PostEntity entity = new PostEntity(request.getTitle(), request.getContent(), request.getAuthor());
         PostEntity returnedEntity = postRepository.save(entity);
 
-        PostResponse response = new PostResponse(returnedEntity.getId(),
-                returnedEntity.getTitle(),
-                returnedEntity.getContent(),
-                returnedEntity.getAuthor());
+        PostResponse response = PostResponse.fromEntity(returnedEntity);
 
         return response;
     }
@@ -36,11 +33,7 @@ public class PostService {
         List<PostResponse> responseList = new ArrayList<>();
 
         for (PostEntity entity : entityList) {
-            PostResponse response = new PostResponse(
-                    entity.getId(),
-                    entity.getTitle(),
-                    entity.getContent(),
-                    entity.getAuthor());
+            PostResponse response = PostResponse.fromEntity(entity);
             responseList.add(response);
         }
         return responseList;
@@ -48,26 +41,20 @@ public class PostService {
 
 
     public PostResponse findById(Long id) {
-        PostEntity entity = postRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Post not found"));
+        PostEntity entity = postRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Post not found"));
 
-        PostResponse response = new PostResponse(
-                entity.getId(),
-                entity.getTitle(),
-                entity.getContent(),
-                entity.getAuthor()
-        );
+        PostResponse response = PostResponse.fromEntity(entity);
 
         return response;
     }
 
     public PostResponse update(Long id, PostRequest request) {
+        //postRepository.update(id, request);
         PostEntity entity = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Post not found"));
 
         entity.setTitle(request.getTitle());
         entity.setContent(request.getContent());
-        entity.setAuthor(request.getAuthor());
 
         return new PostResponse(
                 entity.getId(),
