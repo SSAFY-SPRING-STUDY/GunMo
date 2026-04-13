@@ -15,13 +15,13 @@ public class PostController {
     private final PostService postService;
 
 
-    @PostMapping()
+    @PostMapping
     public PostResponse createPost(@RequestBody PostRequest request) {
         PostResponse response = postService.save(request);
 
         return response;
     }
-    @GetMapping()
+    @GetMapping
     public List<PostResponse> findAllPosts() {
         return postService.findAll();
     }

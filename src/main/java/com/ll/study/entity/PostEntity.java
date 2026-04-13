@@ -1,10 +1,8 @@
 package com.ll.study.entity;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 public class PostEntity {
     private static Long AUTO_INCREMENT = 1L;
     //entity는 db와 연동돼서 entity는 컨트롤러에 넘어가지 않는다.
@@ -19,5 +17,10 @@ public class PostEntity {
         this.title = title;
         this.content = content;
         this.author = author;
+    }
+
+    public void updateTilteAndContent(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }

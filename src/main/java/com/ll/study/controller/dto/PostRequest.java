@@ -1,11 +1,11 @@
 package com.ll.study.controller.dto;
 
 import com.ll.study.entity.PostEntity;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PostRequest {
     private final String title;
     private final String content;

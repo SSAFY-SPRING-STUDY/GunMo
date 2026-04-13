@@ -52,9 +52,8 @@ public class PostService {
         //postRepository.update(id, request);
         PostEntity entity = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Post not found"));
+        entity.updateTilteAndContent(request.getTitle(), request.getContent());
 
-        entity.setTitle(request.getTitle());
-        entity.setContent(request.getContent());
 
         return new PostResponse(
                 entity.getId(),
