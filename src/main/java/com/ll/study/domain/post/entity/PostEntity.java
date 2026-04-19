@@ -1,4 +1,4 @@
-package com.ll.study.entity;
+package com.ll.study.domain.post.entity;
 
 import lombok.Getter;
 

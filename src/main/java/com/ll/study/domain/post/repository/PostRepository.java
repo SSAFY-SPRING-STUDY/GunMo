@@ -1,6 +1,6 @@
-package com.ll.study.repository;
+package com.ll.study.domain.post.repository;
 
-import com.ll.study.entity.PostEntity;
+import com.ll.study.domain.post.entity.PostEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

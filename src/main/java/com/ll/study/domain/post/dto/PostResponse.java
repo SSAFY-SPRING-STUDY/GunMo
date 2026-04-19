@@ -1,7 +1,7 @@
-package com.ll.study.controller.dto;
+package com.ll.study.domain.post.dto;
 
 
-import com.ll.study.entity.PostEntity;
+import com.ll.study.domain.post.entity.PostEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
