@@ -1,9 +1,9 @@
-package com.ll.study.service;
+package com.ll.study.domain.post.service;
 
-import com.ll.study.controller.dto.PostRequest;
-import com.ll.study.controller.dto.PostResponse;
-import com.ll.study.entity.PostEntity;
-import com.ll.study.repository.PostRepository;
+import com.ll.study.domain.post.dto.PostRequest;
+import com.ll.study.domain.post.dto.PostResponse;
+import com.ll.study.domain.post.entity.PostEntity;
+import com.ll.study.domain.post.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
