@@ -14,7 +14,7 @@ public class MemberService {
 
     public MemberResponse join(MemberRequest request){
         MemberEntity member = request.toEntity();
-        MemberEntity saveMember = memberRepository.sava(member);
+        MemberEntity saveMember = memberRepository.save(member);
 
         return MemberResponse.from(saveMember);
     }

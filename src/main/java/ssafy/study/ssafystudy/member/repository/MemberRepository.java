@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MemberRepository {
     private final ConcurrentHashMap<Long, MemberEntity> store = new ConcurrentHashMap<>();
 
-    public MemberEntity sava(MemberEntity member){
+    public MemberEntity save(MemberEntity member){
         store.put(member.getId(), member);
         return member;
     }
