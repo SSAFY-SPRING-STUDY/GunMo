@@ -1,18 +1,32 @@
 package ssafy.study.ssafystudy.post.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import ssafy.study.ssafystudy.member.entity.MemberEntity;
 
 @Getter
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PostEntity {
-    private static long Auto_INCREMENT_ID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String title;
+
     private String content;
+
+    @ManyToOne
     private MemberEntity author;
 
-    public PostEntity(String title, String content, MemberEntity author) {
-        this.id = Auto_INCREMENT_ID++;
+    private PostEntity(String title, String content, MemberEntity author) {
         this.title = title;
         this.content = content;
         this.author = author;
@@ -22,9 +36,8 @@ public class PostEntity {
         return new PostEntity(title, content, author);
     }
 
-    public void update (String title, String content){
+    public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }
-
 }

@@ -2,6 +2,7 @@ package ssafy.study.ssafystudy.post.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ssafy.study.ssafystudy.global.exception.CustomException;
 import ssafy.study.ssafystudy.global.exception.error.ErrorCode;
 import ssafy.study.ssafystudy.member.entity.MemberEntity;
@@ -43,6 +44,7 @@ public class PostService {
         return PostResponse.from(post);
     }
 
+    @Transactional
     public PostResponse update(PostRequest request, Long id, Long authorId) {
         MemberEntity author = memberRepository.findById(authorId)
                 .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
