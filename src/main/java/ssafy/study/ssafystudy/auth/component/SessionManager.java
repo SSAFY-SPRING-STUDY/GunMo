@@ -1,8 +1,8 @@
 package ssafy.study.ssafystudy.auth.component;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.server.ResponseStatusException;
+import ssafy.study.ssafystudy.global.exception.CustomException;
+import ssafy.study.ssafystudy.global.exception.error.ErrorCode;
 
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,7 +25,7 @@ public class SessionManager {
     public Long getMemberId(String sessionKey){
         Long memberId = sessions.get(sessionKey);
         if(memberId == null){
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "세션이 유효하지 않습니다.");
+            throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
         return memberId;
     }
